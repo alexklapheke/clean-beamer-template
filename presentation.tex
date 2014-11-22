@@ -1,0 +1,295 @@
+% LaTeX Beamer template, made with linguistics in mind
+% 
+% · Intended to be compiled with XeLaTeX: <http://www.xelatex.org/>
+% · Uses the free Libertine font: <http://www.linuxlibertine.org/>
+% · Calls packages: booktabs, fontspec, gb4e, natbib, newtxmath, tabularx,
+%                   tikz, tikz-qtree
+% 
+% Feel free to use or modify this for any purpose, but please keep the following
+% attribution and license in the source code. Attribution is not required in the
+% compiled PDF.
+
+
+% The MIT License (MIT)
+% 
+% Copyright (c) 2014 Alexander Klapheke
+% 
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+% 
+% The above copyright notice and this permission notice shall be included in all
+% copies or substantial portions of the Software.
+% 
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+% SOFTWARE.
+
+
+\PassOptionsToPackage{leqno,fleqn}{amsmath} % to prevent option clash
+\documentclass[xetex,serif,xcolor=x11names,compress]{beamer}
+
+% Sets title, author, etc.
+\title[Title]{Title of My Presentation}
+\subtitle{Subtitle}
+\author[Klapheke]{Alexander~Klapheke}
+\institute[Harvard]{Harvard~University}
+\date{November 14, 2012}
+
+% font
+\usepackage{fontspec}
+\usepackage[libertine]{newtxmath}
+\setromanfont[Mapping=tex-text,Numbers=Lining]{Linux Libertine O}
+\setmonofont[Scale=MatchLowercase]{Inconsolata Plus 0}
+
+\usepackage[round,sort&compress]{natbib}
+
+% Strongly discourage hyphenation
+\hyphenpenalty=5000
+\tolerance=1000
+
+% http://colorschemedesigner.com/#0R628uRpUWrRC
+\definecolor{CustomPurple}{HTML}{0D1B31}
+\definecolor{CustomDarkBlue}{HTML}{081220}
+\definecolor{CustomLightBlue}{HTML}{BDD1EE}
+\definecolor{CustomBlue}{HTML}{0658CF}
+\definecolor{CustomRed}{HTML}{CE2A07}
+\definecolor{CustomPale}{HTML}{DFE8F7}
+\definecolor{CustomWhite}{HTML}{FAFAFA}
+
+% Beamer Layout
+\useoutertheme{default}
+\useinnertheme{default}
+
+% Top part (Page count and section names)
+\setbeamertemplate{headline}{%
+	\begin{beamercolorbox}[ht=4.5ex,dp=0ex]{headline}
+		% navigation
+		\strut~ \insertshorttitle~%
+		\setbox0=\hbox{\insertsection}\ifdim\wd0=0pt\else~{\footnotesize ›}~~\insertsection\fi~%
+		\setbox0=\hbox{\insertsubsection}\ifdim\wd0=0pt\else~{\footnotesize ›}~~\insertsubsection\fi~%
+		% page no.
+		\hfill\insertframenumber{} %
+		of \inserttotalframenumber {} ~\vskip2pt
+	\end{beamercolorbox}
+	% light blue bar
+	\begin{beamercolorbox}{lower separation line head}
+		\vskip3pt~
+	\end{beamercolorbox}
+}
+% Bottom part (color bars)
+\setbeamertemplate{footline}{%
+	% light blue bar
+	\begin{beamercolorbox}{upper separation line foot}
+		\vskip3pt~
+	\end{beamercolorbox}
+	% dark blue bar
+	\begin{beamercolorbox}{footline}
+		\vspace{0.5em}
+	\end{beamercolorbox}
+}
+% Section headings (red on light blue)
+\setbeamertemplate{frametitle}{
+	\ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+	\begin{beamercolorbox}[leftskip=0.4cm,sep=0cm,wd=\paperwidth]{frametitle}
+		\usebeamerfont{frametitle}%
+		\vbox{}\vskip-1ex%
+		\strut\insertframetitle\strut\par%
+		{%
+			\ifx\insertframesubtitle\@empty%
+			\else%
+			{\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+			\fi
+		}%
+		\vskip-.4cm% set inside beamercolorbox... evil here...
+	\end{beamercolorbox}%
+}
+
+
+%remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% small caps section headings
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{headline}                   {bg=CustomDarkBlue , fg=CustomWhite    }
+\setbeamercolor*{lower separation line head} {bg=CustomPale                         }
+
+\setbeamercolor*{title}                      {bg=CustomWhite    , fg=CustomPurple   }
+\setbeamercolor*{subtitle}                   {bg=CustomWhite    , fg=CustomPurple   }
+
+\setbeamercolor*{section in toc}             {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{subsection in toc}          {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{subsubsection in toc}       {bg=CustomWhite    , fg=CustomDarkBlue }
+
+\setbeamercolor*{frametitle}                 {bg=CustomPale     , fg=CustomRed      }
+\setbeamercolor*{normal text}                {bg=CustomWhite    , fg=CustomPurple   }
+\setbeamercolor*{block title}                {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{block body}                 {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{alerted text}               {                    fg=CustomRed      }
+\setbeamercolor*{example text}               {                    fg=CustomDarkBlue }
+
+\setbeamercolor*{itemize item}               {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{itemize subitem}            {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{itemize subsubitem}         {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{enumerate item}             {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{enumerate subitem}          {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{enumerate subsubitem}       {bg=CustomWhite    , fg=CustomDarkBlue }
+
+\setbeamercolor*{upper separation line foot} {bg=CustomLightBlue                    }
+\setbeamercolor*{footline}                   {bg=CustomDarkBlue , fg=CustomWhite    }
+
+% Show highlighted outline before each new section
+\AtBeginSection[]{%
+	\begin{frame}
+		% \frametitle{Outline}
+		\tableofcontents[currentsection]
+	\end{frame}
+}
+
+% nice-looking tables
+\RequirePackage{booktabs}
+% tables with relative fixed-width. use code below to allow wrapping
+\RequirePackage{tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+% highlighting
+\newcommand\hla[1]{\textcolor{CustomRed}{#1}}
+\newcommand\hlb[1]{\textcolor{CustomRed}{\textbf{#1}}}
+\newcommand\hlc[1]{\textcolor{CustomBlue}{#1}}
+\newcommand\hld[1]{\textcolor{CustomBlue}{\textbf{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Linguistics-specific things follow: %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% glosses
+\usepackage{gb4e}
+\primebars % use primes instead of 
+\let\eachwordone=\it % italicize original in glosses
+\resetcounteronoverlays{exx} % don't increment example numbers on \pause
+
+% for arrows in glosses
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+
+% for trees
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+
+% Uncomment to start in presentation mode automatically
+\hypersetup{%
+	colorlinks=false,
+	% pdfpagemode=FullScreen,
+}
+
+\begin{document}
+
+\section{}
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\section{Section}
+\subsection{Outline}
+\begin{frame}{Outline}
+	Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \citep{aspects}
+	\vfil
+	\begin{itemize}
+		\item Lorem ipsum dolor sit amet
+		\item Consectetur adipisicing elit
+		\item Sed do \hla{eiusmod tempor} incididunt
+		\item Ut labore et dolore magna aliqua
+	\end{itemize}
+	\vfil
+	This is the \hla{primary highlight color}, and this is the \hlc{secondary highlight color}.
+	Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+\end{frame}
+
+\subsection{Gloss with IPA}
+\begin{frame}{Gloss with IPA}
+	\vfil
+	\begin{exe}
+		\ex{\label{ex:french} {\glll Sont des mots qui vont très bien ensemble. \\
+				sɔ̃ de mo ki vɔ̃ tʁɛ bjɛ̃ ɑ̃sɑ̃bl \\
+				be.\textsc{3pl} \textsc{part} word-\textsc{pl} \textsc{comp} go.\textsc{3pl} very well together \\
+			\trans `These are words that go together well.'}
+		}
+	\end{exe}
+	\vfil
+\end{frame}
+
+\subsection{Table}
+\begin{frame}{Table}
+	\vfil
+	\newcommand\tablep{\hlc{\Large\textbf{+}}}
+	\newcommand\tablem{\hla{\Large\textbf{−}}}
+	% \newcommand\tablep{\hlc{\large ✔}}
+	% \newcommand\tablem{\hla{\large ✘}}
+	\begin{tabularx}{\linewidth}{lCCCC} \toprule
+		Verb type      & Stative & Durative & Telic   & Subinterval \\ \midrule
+		State          & \tablep & \tablep  & \tablem & \tablep     \\
+		Activity       & \tablem & \tablep  & \tablem & \tablep     \\
+		Accomplishment & \tablem & \tablep  & \tablep & \tablem     \\
+		Achievement    & \tablem & \tablem  & \tablep & \tablem     \\
+		Semelfactive   & \tablem & \tablem  & \tablem & \tablem     \\ \bottomrule
+	\end{tabularx}
+	\vfil
+\end{frame}
+
+\subsection{Tree}
+\begin{frame}{Tree}
+	\vfil
+	\begin{center}
+		\begin{tikzpicture}
+			\tikzset{every tree node/.style={align=center,anchor=north}}
+			\Tree [.TP
+				[.DP \edge[roof]; \node(s){\hlc{Socrates}}; ]
+				[.T$'$
+					[.T \textit{pres} ]
+					[.VP
+						[.\node(t){\hla{$t$}}; ]
+						[.V$'$
+							[.V \hlc{is} ]
+							[.AdjP \edge[roof]; \hlc{mortal} ]
+						]
+					]
+				]
+			]
+			\hla{\draw[semithick,->,out=225,in=270,looseness=1.25,shorten >=1pt,shorten <=1pt] (t.south west) to (s.south);}
+		\end{tikzpicture}
+	\end{center}
+	\vfil
+\end{frame}
+
+\section{References}
+\begin{frame}{References}
+	\vfil
+	% Can replace following with: \bibliography{presentation}
+	\begin{thebibliography}{1}
+		\bibitem[{Chomsky(1965)}]{aspects}
+			Chomsky, N. 1965.
+			\newblock \textit{Aspects of the Theory of Syntax}.
+			\newblock Cambridge, MA: MIT Press
+	\end{thebibliography}
+	\vfil
+\end{frame}
+
+\section{}
+\begin{frame}
+	\vfil
+	\begin{center}
+		{\Huge Thank you!}
+	\end{center}
+	\vfil
+\end{frame}
+
+\end{document}
