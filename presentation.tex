@@ -201,22 +201,31 @@
 \section{Section}
 \subsection{Outline}
 \begin{frame}{Outline}
-	Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \citep{aspects}
-	\vfil
+	\vfill
+
+	Lorem ipsum dolor sit amet, \hlc{consectetur adipisicing elit}, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \citep{aspects}
+
+	\vfill
+
 	\begin{itemize}
-		\item Lorem ipsum dolor sit amet
-		\item Consectetur adipisicing elit
-		\item Sed do \hla{eiusmod tempor} incididunt
-		\item Ut labore et dolore magna aliqua
+		\item Duis aute irure dolor in reprehenderit in voluptate
+		\item $\left\llbracket\textsc{Imperf}\right\rrbracket=\mathrm{\lambda}P_{\langle l,st\rangle}\,.\,\mathrm{\lambda}t\,.\,\mathrm{\lambda}w\,.\,\exists e\left[t\subseteq \tau(e)\land P(e,w)=1\right]$
+		\item Velit esse cillum dolore eu fugiat nulla pariatur
 	\end{itemize}
-	\vfil
-	This is the \hla{primary highlight color}, and this is the \hlc{secondary highlight color}.
-	Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+	\vfill
+
+	John \tikz[baseline=(a.base),remember picture]\node(a){\hla{can play}}; the guitar,
+	and Mary \tikz[baseline=(b.base),remember picture]\node(b){\hla{Δ}}; the violin.
+	\begin{tikzpicture}[overlay,remember picture,>=latex]
+		\draw[semithick,->,out=315,in=225,looseness=0.5,color=CustomRed] (a.south) to (b.south);
+	\end{tikzpicture}
+
+	\vfill
 \end{frame}
 
 \subsection{Gloss with IPA}
 \begin{frame}{Gloss with IPA}
-	\vfil
 	\begin{exe}
 		\ex{\label{ex:french} {\glll Sont des mots qui vont très bien ensemble. \\
 				sɔ̃ de mo ki vɔ̃ tʁɛ bjɛ̃ ɑ̃sɑ̃bl \\
@@ -224,12 +233,10 @@
 			\trans `These are words that go together well.'}
 		}
 	\end{exe}
-	\vfil
 \end{frame}
 
 \subsection{Table}
 \begin{frame}{Table}
-	\vfil
 	\newcommand\tablep{\hlc{\Large\textbf{+}}}
 	\newcommand\tablem{\hla{\Large\textbf{−}}}
 	% \newcommand\tablep{\hlc{\large ✔}}
@@ -242,12 +249,10 @@
 		Achievement    & \tablem & \tablem  & \tablep & \tablem     \\
 		Semelfactive   & \tablem & \tablem  & \tablem & \tablem     \\ \bottomrule
 	\end{tabularx}
-	\vfil
 \end{frame}
 
 \subsection{Tree}
 \begin{frame}{Tree}
-	\vfil
 	\begin{center}
 		\begin{tikzpicture}
 			\tikzset{every tree node/.style={align=center,anchor=north}}
@@ -267,12 +272,10 @@
 			\hla{\draw[semithick,->,out=225,in=270,looseness=1.25,shorten >=1pt,shorten <=1pt] (t.south west) to (s.south);}
 		\end{tikzpicture}
 	\end{center}
-	\vfil
 \end{frame}
 
 \subsection{Graph}
 \begin{frame}{Graph}
-	\vfil
 	\begin{center}
 		\begin{tikzpicture}[y=0.80pt, x=0.8pt,yscale=-1, inner sep=0pt, outer sep=0pt]
 			\begin{scope}[shift={(-76.26843,-728.64282)}]
@@ -315,12 +318,10 @@
 			\end{scope}
 		\end{tikzpicture}
 	\end{center}
-	\vfil
 \end{frame}
 
 \section{References}
 \begin{frame}{References}
-	\vfil
 	% Can replace following with: \bibliography{presentation}
 	\begin{thebibliography}{1}
 		\bibitem[{Chomsky(1965)}]{aspects}
@@ -328,16 +329,13 @@
 			\newblock \textit{Aspects of the Theory of Syntax}.
 			\newblock Cambridge, MA: MIT Press
 	\end{thebibliography}
-	\vfil
 \end{frame}
 
 \section{}
 \begin{frame}
-	\vfil
 	\begin{center}
 		{\Huge Thank you!}
 	\end{center}
-	\vfil
 \end{frame}
 
 \end{document}
