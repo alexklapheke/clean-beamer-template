@@ -35,6 +35,7 @@
 
 \PassOptionsToPackage{leqno,fleqn}{amsmath} % to prevent option clash
 \documentclass[xetex,serif,xcolor=x11names,compress]{beamer}
+\usetheme{clean}
 
 % Sets title, author, etc.
 \title[Title]{Title of My Presentation}
@@ -49,111 +50,12 @@
 \setromanfont[Mapping=tex-text,Numbers=Lining]{Linux Libertine O}
 \setmonofont[Scale=MatchLowercase]{Inconsolata Plus 0}
 
-\usepackage[round,sort&compress]{natbib}
-
 % Strongly discourage hyphenation
 \hyphenpenalty=5000
 \tolerance=1000
 
-% http://colorschemedesigner.com/#0R628uRpUWrRC
-\definecolor{CustomPurple}{HTML}{0D1B31}
-\definecolor{CustomDarkBlue}{HTML}{081220}
-\definecolor{CustomLightBlue}{HTML}{BDD1EE}
-\definecolor{CustomBlue}{HTML}{0658CF}
-\definecolor{CustomRed}{HTML}{CE2A07}
-\definecolor{CustomPale}{HTML}{DFE8F7}
-\definecolor{CustomWhite}{HTML}{FAFAFA}
-
-% Beamer Layout
-\useoutertheme{default}
-\useinnertheme{default}
-
-% Top part (Page count and section names)
-\setbeamertemplate{headline}{%
-	\begin{beamercolorbox}[ht=4.5ex,dp=0ex]{headline}
-		% navigation
-		\strut~ \insertshorttitle~%
-		\setbox0=\hbox{\insertsection}\ifdim\wd0=0pt\else~{\footnotesize ›}~~\insertsection\fi~%
-		\setbox0=\hbox{\insertsubsection}\ifdim\wd0=0pt\else~{\footnotesize ›}~~\insertsubsection\fi~%
-		% page no.
-		\hfill\insertframenumber{} %
-		of \inserttotalframenumber {} ~\vskip2pt
-	\end{beamercolorbox}
-	% light blue bar
-	\begin{beamercolorbox}{lower separation line head}
-		\vskip3pt~
-	\end{beamercolorbox}
-}
-% Bottom part (color bars)
-\setbeamertemplate{footline}{%
-	% light blue bar
-	\begin{beamercolorbox}{upper separation line foot}
-		\vskip3pt~
-	\end{beamercolorbox}
-	% dark blue bar
-	\begin{beamercolorbox}{footline}
-		\vspace{0.5em}
-	\end{beamercolorbox}
-}
-% Section headings (red on light blue)
-\setbeamertemplate{frametitle}{
-	\ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
-	\begin{beamercolorbox}[leftskip=0.4cm,sep=0cm,wd=\paperwidth]{frametitle}
-		\usebeamerfont{frametitle}%
-		\vbox{}\vskip-1ex%
-		\strut\insertframetitle\strut\par%
-		{%
-			\ifx\insertframesubtitle\@empty%
-			\else%
-			{\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
-			\fi
-		}%
-		\vskip-.4cm% set inside beamercolorbox... evil here...
-	\end{beamercolorbox}%
-}
-
-
-%remove navigation symbols
-\setbeamertemplate{navigation symbols}{}
-
-% small caps section headings
-\setbeamerfont{title like}{shape=\scshape}
-\setbeamerfont{frametitle}{shape=\scshape}
-
-\setbeamercolor*{headline}                   {bg=CustomDarkBlue , fg=CustomWhite    }
-\setbeamercolor*{lower separation line head} {bg=CustomPale                         }
-
-\setbeamercolor*{title}                      {bg=CustomWhite    , fg=CustomPurple   }
-\setbeamercolor*{subtitle}                   {bg=CustomWhite    , fg=CustomPurple   }
-
-\setbeamercolor*{section in toc}             {bg=CustomWhite    , fg=CustomDarkBlue }
-\setbeamercolor*{subsection in toc}          {bg=CustomWhite    , fg=CustomDarkBlue }
-\setbeamercolor*{subsubsection in toc}       {bg=CustomWhite    , fg=CustomDarkBlue }
-
-\setbeamercolor*{frametitle}                 {bg=CustomPale     , fg=CustomRed      }
-\setbeamercolor*{normal text}                {bg=CustomWhite    , fg=CustomPurple   }
-\setbeamercolor*{block title}                {bg=CustomWhite    , fg=CustomDarkBlue }
-\setbeamercolor*{block body}                 {bg=CustomWhite    , fg=CustomDarkBlue }
-\setbeamercolor*{alerted text}               {                    fg=CustomRed      }
-\setbeamercolor*{example text}               {                    fg=CustomDarkBlue }
-
-\setbeamercolor*{itemize item}               {bg=CustomWhite    , fg=CustomDarkBlue }
-\setbeamercolor*{itemize subitem}            {bg=CustomWhite    , fg=CustomDarkBlue }
-\setbeamercolor*{itemize subsubitem}         {bg=CustomWhite    , fg=CustomDarkBlue }
-\setbeamercolor*{enumerate item}             {bg=CustomWhite    , fg=CustomDarkBlue }
-\setbeamercolor*{enumerate subitem}          {bg=CustomWhite    , fg=CustomDarkBlue }
-\setbeamercolor*{enumerate subsubitem}       {bg=CustomWhite    , fg=CustomDarkBlue }
-
-\setbeamercolor*{upper separation line foot} {bg=CustomLightBlue                    }
-\setbeamercolor*{footline}                   {bg=CustomDarkBlue , fg=CustomWhite    }
-
-% Show highlighted outline before each new section
-\AtBeginSection[]{%
-	\begin{frame}
-		% \frametitle{Outline}
-		\tableofcontents[currentsection]
-	\end{frame}
-}
+% citations
+\usepackage[round,sort&compress]{natbib}
 
 % nice-looking tables
 \RequirePackage{booktabs}
@@ -163,10 +65,8 @@
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 
 % highlighting
-\newcommand\hla[1]{\textcolor{CustomRed}{#1}}
-\newcommand\hlb[1]{\textcolor{CustomRed}{\textbf{#1}}}
-\newcommand\hlc[1]{\textcolor{CustomBlue}{#1}}
-\newcommand\hld[1]{\textcolor{CustomBlue}{\textbf{#1}}}
+\newcommand\hla[1]{\textcolor{CustomRed}{#1}}  % primary color
+\newcommand\hlb[1]{\textcolor{CustomBlue}{#1}} % secondary color
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Linguistics-specific things follow: %
@@ -203,7 +103,7 @@
 \begin{frame}{Outline}
 	\vfill
 
-	Lorem ipsum dolor sit amet, \hlc{consectetur adipisicing elit}, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \citep{aspects}
+	Lorem ipsum dolor sit amet, \hlb{consectetur adipisicing elit}, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \citep{aspects}
 
 	\vfill
 
@@ -237,9 +137,9 @@
 
 \subsection{Table}
 \begin{frame}{Table}
-	\newcommand\tablep{\hlc{\Large\textbf{+}}}
+	\newcommand\tablep{\hlb{\Large\textbf{+}}}
 	\newcommand\tablem{\hla{\Large\textbf{−}}}
-	% \newcommand\tablep{\hlc{\large ✔}}
+	% \newcommand\tablep{\hlb{\large ✔}}
 	% \newcommand\tablem{\hla{\large ✘}}
 	\begin{tabularx}{\linewidth}{lCCCC} \toprule
 		Verb type      & Stative & Durative & Telic   & Subinterval \\ \midrule
@@ -257,14 +157,14 @@
 		\begin{tikzpicture}
 			\tikzset{every tree node/.style={align=center,anchor=north}}
 			\Tree [.TP
-				[.DP \edge[roof]; \node(s){\hlc{Socrates}}; ]
+				[.DP \edge[roof]; \node(s){\hlb{Socrates}}; ]
 				[.T$'$
 					[.T \textit{pres} ]
 					[.VP
 						[.\node(t){\hla{$t$}}; ]
 						[.V$'$
-							[.V \hlc{is} ]
-							[.AdjP \edge[roof]; \hlc{mortal} ]
+							[.V \hlb{is} ]
+							[.AdjP \edge[roof]; \hlb{mortal} ]
 						]
 					]
 				]

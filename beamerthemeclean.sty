@@ -1,0 +1,135 @@
+% LaTeX Beamer template, made with linguistics in mind
+% 
+% · Intended to be compiled with XeLaTeX: <http://www.xelatex.org/>
+% · Uses the free Libertine font: <http://www.linuxlibertine.org/>
+% · Calls packages: booktabs, fontspec, gb4e, natbib, newtxmath, tabularx,
+%                   tikz, tikz-qtree
+% 
+% Feel free to use or modify this for any purpose, but please keep the following
+% attribution and license in the source code. Attribution is not required in the
+% compiled PDF.
+
+
+% The MIT License (MIT)
+% 
+% Copyright (c) 2014 Alexander Klapheke
+% 
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+% 
+% The above copyright notice and this permission notice shall be included in all
+% copies or substantial portions of the Software.
+% 
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+% SOFTWARE.
+\ProvidesPackage{beamerthemeclean}[]
+
+% http://colorschemedesigner.com/#0R628uRpUWrRC
+\definecolor{CustomPurple}{HTML}{0D1B31}
+\definecolor{CustomDarkBlue}{HTML}{081220}
+\definecolor{CustomLightBlue}{HTML}{BDD1EE}
+\definecolor{CustomBlue}{HTML}{0658CF}
+\definecolor{CustomRed}{HTML}{CE2A07}
+\definecolor{CustomPale}{HTML}{DFE8F7}
+\definecolor{CustomWhite}{HTML}{FAFAFA}
+
+% Beamer Layout
+\useoutertheme{default}
+\useinnertheme{default}
+
+% Top part (Page count and section names)
+\setbeamertemplate{headline}{%
+	\begin{beamercolorbox}[ht=4.5ex,dp=0ex]{headline}
+		% navigation
+		\strut~ \insertshorttitle~%
+		\setbox0=\hbox{\insertsection}\ifdim\wd0=0pt\else~{\footnotesize ›}~~\insertsection\fi~%
+		\setbox0=\hbox{\insertsubsection}\ifdim\wd0=0pt\else~{\footnotesize ›}~~\insertsubsection\fi~%
+		% page no.
+		\hfill\insertframenumber{} %
+		of \inserttotalframenumber {} ~\vskip2pt
+	\end{beamercolorbox}
+	% light blue bar
+	\begin{beamercolorbox}{lower separation line head}
+		\vskip3pt~
+	\end{beamercolorbox}
+}
+% Bottom part (color bars)
+\setbeamertemplate{footline}{%
+	% light blue bar
+	\begin{beamercolorbox}{upper separation line foot}
+		\vskip3pt~
+	\end{beamercolorbox}
+	% dark blue bar
+	\begin{beamercolorbox}{footline}
+		\vspace{0.5em}
+	\end{beamercolorbox}
+}
+% Section headings (red on light blue)
+\setbeamertemplate{frametitle}{
+	\ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+	\begin{beamercolorbox}[leftskip=0.4cm,sep=0cm,wd=\paperwidth]{frametitle}
+		\usebeamerfont{frametitle}%
+		\vbox{}\vskip-1ex%
+		\strut\insertframetitle\strut\par%
+		{%
+			\ifx\insertframesubtitle\@empty%
+			\else%
+			{\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+			\fi
+		}%
+		% \vskip-.4cm% set inside beamercolorbox... evil here...
+	\end{beamercolorbox}%
+}
+
+
+%remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% small caps section headings
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{headline}                   {bg=CustomDarkBlue , fg=CustomWhite    }
+\setbeamercolor*{lower separation line head} {bg=CustomPale                         }
+
+\setbeamercolor*{title}                      {bg=CustomWhite    , fg=CustomPurple   }
+\setbeamercolor*{subtitle}                   {bg=CustomWhite    , fg=CustomPurple   }
+
+\setbeamercolor*{section in toc}             {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{subsection in toc}          {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{subsubsection in toc}       {bg=CustomWhite    , fg=CustomDarkBlue }
+
+\setbeamercolor*{frametitle}                 {bg=CustomPale     , fg=CustomRed      }
+\setbeamercolor*{normal text}                {bg=CustomWhite    , fg=CustomPurple   }
+\setbeamercolor*{block title}                {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{block body}                 {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{alerted text}               {                    fg=CustomRed      }
+\setbeamercolor*{example text}               {                    fg=CustomDarkBlue }
+
+\setbeamercolor*{itemize item}               {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{itemize subitem}            {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{itemize subsubitem}         {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{enumerate item}             {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{enumerate subitem}          {bg=CustomWhite    , fg=CustomDarkBlue }
+\setbeamercolor*{enumerate subsubitem}       {bg=CustomWhite    , fg=CustomDarkBlue }
+
+\setbeamercolor*{upper separation line foot} {bg=CustomLightBlue                    }
+\setbeamercolor*{footline}                   {bg=CustomDarkBlue , fg=CustomWhite    }
+
+% Show highlighted outline before each new section
+\AtBeginSection[]{%
+	\begin{frame}
+		% \frametitle{Outline}
+		\tableofcontents[currentsection]
+	\end{frame}
+}
+
