@@ -1,9 +1,8 @@
 % LaTeX Beamer template, made with linguistics in mind
 % 
-% · Intended to be compiled with XeLaTeX: <http://www.xelatex.org/>
-% · Uses the free Libertine font: <http://www.linuxlibertine.org/>
-% · Calls packages: booktabs, fontspec, gb4e, natbib, newtxmath, tabularx,
-%                   tikz, tikz-qtree
+% * Intended to be compiled with XeLaTeX: <http://www.xelatex.org/>
+% * Uses the free Libertine font: <http://www.linuxlibertine.org/>
+%   (defines character U+203A in top bar)
 % 
 % Feel free to use or modify this for any purpose, but please keep the following
 % attribution and license in the source code. Attribution is not required in the
@@ -32,6 +31,8 @@
 % OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 % SOFTWARE.
 \ProvidesPackage{beamerthemeclean}[]
+
+\mode<presentation>
 
 % http://colorschemedesigner.com/#0R628uRpUWrRC
 \definecolor{CustomPurple}{HTML}{0D1B31}
@@ -133,3 +134,4 @@
 	\end{frame}
 }
 
+\mode<all>
