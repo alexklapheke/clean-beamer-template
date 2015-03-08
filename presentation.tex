@@ -98,29 +98,33 @@
 \end{frame}
 
 \section{Section}
-\subsection{Outline}
-\begin{frame}{Outline}
+\subsection{Formatting}
+\begin{frame}{Formatting}
 	\vfill
 
-	Lorem ipsum dolor sit amet, \hlb{consectetur adipisicing elit}, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \citep{aspects}
+	Lorem ipsum dolor sit amet, \alert{consectetur adipisicing elit}, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \citep{aspects}
 
 	\vfill
 
+	\begin{block}{This is a Block}
+		This is important information
+	\end{block}
+
+	\vfill
 	\begin{itemize}
-		\item Duis aute irure dolor in reprehenderit in voluptate
-		\item $\left\llbracket\textsc{Imperf}\right\rrbracket=\mathrm{\lambda}P_{\langle l,st\rangle}\,.\,\mathrm{\lambda}t\,.\,\mathrm{\lambda}w\,.\,\exists e\left[t\subseteq \tau(e)\land P(e,w)=1\right]$
-		\item Velit esse cillum dolore eu fugiat nulla pariatur
+		\item $\left\llbracket\textsc{Imperf}\right\rrbracket=\mathrm{λ}P_{\langle l,st\rangle}\,.\,\mathrm{λ}t\,.\,\mathrm{λ}w\,.\,\exists e\left[t\subseteq \mathrm{τ}(e)\land P(e,w)=1\right]$
+
+		\item
+			John \tikz[baseline=(a.base),remember picture]\node(a){\hla{can play}}; the guitar, and
+			Mary \tikz[baseline=(b.base),remember picture]\node(b){\hla{Δ}}; the violin.
+			\begin{tikzpicture}[overlay,remember picture,>=latex]
+				\draw[semithick,->,out=315,in=225,looseness=0.5,color=CustomRed] (a.south) to (b.south);
+			\end{tikzpicture}
+
 	\end{itemize}
 
 	\vfill
 
-	John \tikz[baseline=(a.base),remember picture]\node(a){\hla{can play}}; the guitar, and
-	Mary \tikz[baseline=(b.base),remember picture]\node(b){\hla{Δ}}; the violin.
-	\begin{tikzpicture}[overlay,remember picture,>=latex]
-		\draw[semithick,->,out=315,in=225,looseness=0.5,color=CustomRed] (a.south) to (b.south);
-	\end{tikzpicture}
-
-	\vfill
 \end{frame}
 
 \subsection{Gloss with IPA}
