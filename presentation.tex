@@ -112,11 +112,11 @@
 
 	\vfill
 	\begin{itemize}
-		\item $\left\llbracket\textsc{Imperf}\right\rrbracket=\mathrm{λ}P_{\langle l,st\rangle}\,.\,\mathrm{λ}t\,.\,\mathrm{λ}w\,.\,\exists e\left[t\subseteq \mathrm{τ}(e)\land P(e,w)=1\right]$
+		\item $\left\llbracket\textsc{Imperf}\right\rrbracket=\uplambda P_{\langle l,st\rangle}\mathrel{.}\uplambda t\mathrel{.}\uplambda w\mathrel{.}\exists e\left[t\subseteq \mathrm{\uptau}(e)\land P(e,w)=1\right]$
 
 		\item
 			John \tikz[baseline=(a.base),remember picture]\node(a){\hla{can play}}; the guitar, and
-			Mary \tikz[baseline=(b.base),remember picture]\node(b){\hla{Δ}}; the violin.
+			Mary \tikz[baseline=(b.base),remember picture]\node(b){\hla{$\updelta$}}; the violin.
 			\begin{tikzpicture}[overlay,remember picture,>=latex]
 				\draw[semithick,->,out=315,in=225,looseness=0.5,color=CustomRed] (a.south) to (b.south);
 			\end{tikzpicture}
@@ -180,7 +180,7 @@
 \subsection{Graph}
 \begin{frame}{Graph}
 	\begin{center}
-		\begin{tikzpicture}[thick,color=CustomPurple]
+		\begin{tikzpicture}[thick,color=CustomDarkBlue]
 			% Axes
 			\draw[->] (0,0) -- coordinate (x axis mid)(9.5,0);
 			\draw[->] (0,0) -- coordinate (y axis mid)(0,5.5);
