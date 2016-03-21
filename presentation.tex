@@ -47,9 +47,9 @@
 
 % font
 \usepackage{fontspec}
-\usepackage[libertine]{newtxmath}
 \setromanfont[Mapping=tex-text,Numbers=Lining]{Linux Libertine O}
 \setmonofont[Scale=MatchLowercase]{Inconsolata Plus 0}
+\usepackage[libertine]{newtxmath}
 
 % Strongly discourage hyphenation
 \hyphenpenalty=5000
@@ -103,7 +103,7 @@
 \subsection{Formatting}
 \begin{frame}{Keep information sparse}
 
-	Important information can be \alert{highlighted} to draw the eye to it.
+	Reserve bullet points for actual, coherent lists.
 
 	\vfill
 
@@ -129,7 +129,7 @@
 \begin{frame}{Break up long formulas}
 	\begin{center}
 		\begin{tabular}{cc@{}c@{}cc}
-			\Large \colorbox{CustomPale}{\strut$\textsc{be}$} & \Large $=$ &
+			\Large \textsc{be} & \Large $=$ &
 			\Large \colorbox{CustomPale}{\strut$\text{λ}Q\textcolor{CustomGray}{_{\langle\langle\alpha,t\rangle,t\rangle}}$} & \Large $\,.\,$ &
 			\Large \colorbox{CustomPale}{\strut$\text{λ}x\textcolor{CustomGray}{_\alpha}$ $\,.\,$
 			\strut$Q\left(\text{λ}y\textcolor{CustomGray}{_\alpha}\,.\,y=x\right)$} \\
@@ -151,9 +151,9 @@
 					[.TP
 						[.DP \edge[roof]; \node(you){you}; ]
 						[.T$'$
-							[.T \node(aret){$t$}; ]
+							[.T \node(aret){\textcolor{CustomGray}{$t$}}; ]
 							[.VP
-								[.DP \edge[roof]; \node(yout){$t$}; ]
+								[.DP \edge[roof]; \node(yout){\textcolor{CustomGray}{$t$}}; ]
 								[.V$'$
 									[.V doing? ]
 									[.DP \edge[roof]; \node(whatt){\hla{$t$}}; ]
@@ -163,9 +163,9 @@
 					]
 				]
 			]
-			\hla{\draw[semithick,->,out=225,in=270,looseness=1.25,shorten >=1pt,shorten <=1pt] (whatt.south west) to (what.south);}
-			\draw[semithick,->,out=225,in=270,looseness=1.25,shorten >=1pt,shorten <=1pt] (yout.south west)  to (you.south);
-			\draw[semithick,->,out=225,in=270,looseness=1.25,shorten >=1pt,shorten <=1pt] (aret.south west)  to (are.south);
+			\draw[semithick,->,out=225,in=270,looseness=1.2,shorten >=1pt,shorten <=1pt,color=CustomRed] (whatt.south west) to (what.south);
+			\draw[semithick,->,out=225,in=270,looseness=1.2,shorten >=1pt,shorten <=1pt,color=CustomGray] (yout.south west)  to (you.south);
+			\draw[semithick,->,out=225,in=270,looseness=1.2,shorten >=1pt,shorten <=1pt,color=CustomGray] (aret.south west)  to (are.south);
 		\end{tikzpicture}
 	}
 	\end{center}
@@ -188,26 +188,44 @@
 \subsection{Graph}
 \begin{frame}{Keep graphs simple}
 	\begin{center}
+		\resizebox{\linewidth}{!}{%
 		\begin{tikzpicture}[thick,color=CustomDarkBlue]
 			% Axes
-			\draw[->,color=CustomGray] (0,0) -- coordinate (x axis mid)(9.5,0);
-			\draw[->,color=CustomGray] (0,0) -- coordinate (y axis mid)(0,5.5);
-			
-			% Tick marks
-			\foreach \x in {1,...,9}
-				\draw[color=CustomGray] (\x cm,1pt) -- (\x cm,-3pt) node[anchor=north] {\x};
-			\foreach \y in {0,...,5}
-				\draw[color=CustomGray] (1pt,\y cm) -- (-3pt,\y cm) node[anchor=east] {\y};
+			\draw[color=CustomGray] (0,0) -- coordinate (x axis mid)(9.5,0);
+			\draw[color=CustomGray] (0,0) -- coordinate (y axis mid)(0,3);
 
 			% Labels
-			\node[below=0.5cm] at (x axis mid) {Time};
-			\node[rotate=90,above=0.5cm] at (y axis mid) {Data};
+			% \node[below]           at (x axis mid) {Time};
+			% \node[above,xshift=-1cm,rotate=90] at (y axis mid) {Measurement};
 
-			% \draw[color=CustomRed,ultra thick] plot[smooth,domain=0.363361:10] ({\x},{0.0415256*pow(\x,3)-0.617731*pow(\x,2)+2.67325*\x-0.891787});
-			\draw[color=CustomRed,ultra thick] plot[smooth,domain=0:10] ({\x},{0.305827*\x+1.07987});
-			\foreach \n in {(1, 1.3087), (2, 2.1548), (3, 2.6518), (4, 2.636), (5, 2.4612), (6, 1.2886), (7, 2.2049), (8, 2.8100), (9, 5.965)}{\node at \n {\LARGE\textbullet};}
-			\node[color=CustomRed] at (5,5) {$R^2=0.37$};
-		\end{tikzpicture}
+			% Numbers
+			\node[color=CustomGray,anchor=north east] at (0cm,0cm)      {$0$};    % zero
+			\node[color=CustomGray,anchor=north]      at (9cm,0cm)      {$9$};    % x maximum
+			\node[color=CustomGray,anchor=east]       at (0cm, 2.965cm) {$2.97$}; % y maximum
+			\node[color=CustomGray,anchor=east]       at (0cm, 2.05cm)  {$\bar{x}=2.05$}; % y average
+
+			% Trend line
+			\draw[color=CustomRed] plot[smooth,domain=0:9.1] ({\x},{0.233865*\x+0.884119});
+
+			% Average line
+			\draw[thin,dashed,color=CustomGray] (0cm,2.05cm) -- (5cm,2.05cm);
+
+			% Points
+			\foreach \n in {%
+				(1, 1.1548),
+				(2, 1.3087),
+				(3, 1.636),
+				(4, 1.6518),
+				(5, 2.2049),
+				(6, 2.2886),
+				(7, 2.4612),
+				(8, 2.8100),
+				(9, 2.965)
+			}{\node at \n {\LARGE\textbullet};}
+
+			% R²
+			\node[color=CustomRed] at (5,3.5) {$R^2=0.98$};
+		\end{tikzpicture}}
 	\end{center}
 \end{frame}
 
