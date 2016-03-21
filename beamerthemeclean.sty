@@ -35,12 +35,13 @@
 \mode<presentation>
 
 % http://colorschemedesigner.com/#0R628uRpUWrRC
-\definecolor{CustomDarkBlue}{HTML}{081220}
-\definecolor{CustomLightBlue}{HTML}{BDD1EE}
-\definecolor{CustomBlue}{HTML}{0658CF}
-\definecolor{CustomRed}{HTML}{CE2A07}
-\definecolor{CustomPale}{HTML}{DFE8F7}
-\definecolor{CustomWhite}{HTML}{FAFAFA}
+\definecolor{CustomDarkBlue}{HTML}{081220} % generic dark, for text etc.
+\definecolor{CustomLightBlue}{HTML}{BDD1EE} % for footer line
+\definecolor{CustomRed}{HTML}{CE2A07} % primary highlight: for more important text
+\definecolor{CustomGray}{HTML}{9BA0A9} % for less important text
+\definecolor{CustomBlue}{HTML}{0658CF} % secondary highlight
+\definecolor{CustomPale}{HTML}{DFE8F7} % background for blocks
+\definecolor{CustomWhite}{HTML}{FAFAFA} % generic light, for background
 
 % Beamer Layout
 \useoutertheme{default}
@@ -99,6 +100,7 @@
 \setbeamerfont{frametitle}{shape=\scshape}
 
 \setbeamercolor*{headline}                   {bg=CustomDarkBlue , fg=CustomWhite    }
+\setbeamercolor*{section in head/foot}       {bg=CustomDarkBlue , fg=CustomWhite    }
 \setbeamercolor*{lower separation line head} {bg=CustomPale                         }
 
 \setbeamercolor*{title}                      {bg=CustomWhite    , fg=CustomDarkBlue }
@@ -130,12 +132,12 @@
 \setbeamercolor*{upper separation line foot} {bg=CustomLightBlue                    }
 \setbeamercolor*{footline}                   {bg=CustomDarkBlue , fg=CustomWhite    }
 
-% Show highlighted outline before each new section
-\AtBeginSection[]{%
-	\begin{frame}
-		% \frametitle{Outline}
-		\tableofcontents[currentsection]
-	\end{frame}
-}
+% % Show highlighted outline before each new section
+% \AtBeginSection[]{%
+% 	\begin{frame}
+% 		% \frametitle{Outline}
+% 		\tableofcontents[currentsection]
+% 	\end{frame}
+% }
 
 \mode<all>
