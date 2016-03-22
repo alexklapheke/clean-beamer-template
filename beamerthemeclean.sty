@@ -34,6 +34,15 @@
 
 \mode<presentation>
 
+\newif\if@doFootline
+\@doFootlinefalse
+\DeclareOption{footline}{\@doFootlinetrue}
+\ProcessOptions
+
+% \DeclareOptionBeamer{footline}[true]{\def\beamer@themeclean@footline{#1}}
+% \ExecuteOptionsBeamer{footline=false}
+% \ProcessOptionsBeamer
+
 % http://colorschemedesigner.com/#0R628uRpUWrRC
 \definecolor{CustomDarkBlue}{HTML}{081220} % generic dark, for text etc.
 \definecolor{CustomLightBlue}{HTML}{BDD1EE} % for footer line
@@ -129,8 +138,10 @@
 \setbeamercolor*{enumerate subitem}          {bg=CustomWhite    , fg=CustomDarkBlue }
 \setbeamercolor*{enumerate subsubitem}       {bg=CustomWhite    , fg=CustomDarkBlue }
 
-\setbeamercolor*{upper separation line foot} {bg=CustomLightBlue                    }
-\setbeamercolor*{footline}                   {bg=CustomDarkBlue , fg=CustomWhite    }
+\if@doFootline
+	\setbeamercolor*{upper separation line foot} {bg=CustomLightBlue                    }
+	\setbeamercolor*{footline}                   {bg=CustomDarkBlue , fg=CustomWhite    }
+\fi
 
 % % Show highlighted outline before each new section
 % \AtBeginSection[]{%
