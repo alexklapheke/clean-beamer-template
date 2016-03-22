@@ -5,11 +5,8 @@ Unfortunately, all the default themes are like this (there are some nice third-p
 [bracken]: http://cameron.bracken.bz/beamer-template
 [uab]: http://deic.uab.es/~iblanes/beamer_gallery/large/AnnArbor-default-default-02.png
 [youtube]: https://www.youtube.com/watch?v=meBXuTIPJQk
-<<<<<<< HEAD
 
-## Options
+### Options
 
 `footline` includes a color bar on the bottom to match the header bar.
 
-=======
->>>>>>> 5e4b990f548cab49645804979f5edb489b607a35
